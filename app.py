@@ -1,6 +1,6 @@
 #main.py module
 import logging
-from db import Database
+# from db import Database
 from aiogram import Bot, Dispatcher, executor, types
 from default_button import menu_keyboard, menu_education, menu_courses
 from inline_button import keyboard
@@ -24,13 +24,13 @@ async def send_welcome(message: types.Message):
     ful_name = message.from_user.full_name
     user_id = message.from_user.id
     username = message.from_user.username
-    query = f"INSERT INTO users_1 (username, full_name, user_id) VALUES ('{username}', '{ful_name}', {user_id})"
-    if await Database.check_user_id(user_id):
-        await message.reply(f"Assalomu aleykum sizni ko'rganimdan xursandman  {ful_name}", reply_markup=menu_keyboard)
-
-    else:
-        await Database.connect(query, "insert")
-        await message.reply(f"Xushkelibsiz {ful_name}", reply_markup=menu_keyboard)
+    # query = f"INSERT INTO users_1 (username, full_name, user_id) VALUES ('{username}', '{ful_name}', {user_id})"
+    # if await Database.check_user_id(user_id):
+    await message.reply(f"Assalomu aleykum sizni ko'rganimdan xursandman  {ful_name}", reply_markup=menu_keyboard)
+    #
+    # else:
+    #     await Database.connect(query, "insert")
+    #     await message.reply(f"Xushkelibsiz {ful_name}", reply_markup=menu_keyboard)
 
 
 @dp.message_handler(lambda message: message.text == "Mening biografiyam")
